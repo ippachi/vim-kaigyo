@@ -1,9 +1,8 @@
 function! kaigyo#formatexpr()
-  echom expand('<afile>')
   let target_text = getline(v:lnum)
   let tempname = tempname()
   call writefile([target_text], tempname)
-  let budoux_path = expand('<sfile>:p:h') . '../node_modules/.bin/budoux'
+  let budoux_path = expand('<sfile>:p:h') . '/node_modules/.bin/budoux'
   let segments = system('cat ' . tempname . ' | ' . budoux_path)
   call delete(tempname)
 
